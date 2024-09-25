@@ -1,3 +1,4 @@
-**/kotlin/**
-**/.gradle/**
-**/build/**
+**/kotlin/.gradle
+**/kotlin/.kotlin
+**/kotlin/.idea
+**/kotlin/app/build
