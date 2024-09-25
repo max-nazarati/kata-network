@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 class ErrorController {
 
     @ExceptionHandler(value = [PersistenceException::class])
-    fun persistenceExceptionHandler(e: PersistenceException) : ResponseEntity<PersistenceException> {
-        return ResponseEntity(e, keyToHttpStatus(e.errorKey))
+    fun persistenceExceptionHandler(e: PersistenceException) : ResponseEntity<PersistenceExceptionDto> {
+        return ResponseEntity(PersistenceExceptionDto(e), keyToHttpStatus(e.errorKey))
     }
 
     private fun keyToHttpStatus(key: ErrorKey) : HttpStatus {
