@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kotlin_kata_network
+    password: root
+    username: root
