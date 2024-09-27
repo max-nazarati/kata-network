@@ -30,7 +30,7 @@ class CliqueController(
 
     @GetMapping("{cliqueId}")
     fun get(@PathVariable networkId: String, @PathVariable cliqueId: String): CliqueDto {
-        return repository.findByNetworkIdAndId(networkId, cliqueId)?.let { CliqueDto(it) }
+        return repository.find(networkId, cliqueId)?.let { CliqueDto(it) }
             ?: throw ValidationException(ErrorKey.NOT_FOUND)
     }
 
