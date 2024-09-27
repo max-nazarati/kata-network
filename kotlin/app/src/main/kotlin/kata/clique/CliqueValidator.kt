@@ -1,15 +1,15 @@
-package kata.network
+package kata.clique
 
+import kata.concept.Validator
 import kata.exception.ErrorKey
 import kata.exception.ValidationException
-import kata.concept.Validator
 import org.springframework.stereotype.Service
 
 @Service
-class NetworkValidator(
-    private val repository: NetworkRepository
-) : Validator<Network> {
-    override fun validate(t: Network) {
+class CliqueValidator(
+    private val repository: CliqueRepository
+) : Validator<Clique> {
+    override fun validate(t: Clique) {
         if (repository.existsById(t.id)) {
             throw ValidationException(ErrorKey.ALREADY_EXISTS)
         }

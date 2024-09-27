@@ -1,12 +1,13 @@
 package kata.network.presentation
 
 import kata.exception.ErrorKey
-import kata.exception.PersistenceException
+import kata.exception.ValidationException
 import kata.concept.Validator
 import kata.network.Network
 import kata.network.NetworkDto
 import kata.network.NetworkRepository
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -33,7 +34,12 @@ class NetworkController(
     fun get(@PathVariable id: String) : NetworkDto {
         val model = repository.findByIdOrNull(id)
 
-        return model?.let {NetworkDto(it)} ?: throw PersistenceException(ErrorKey.NOT_FOUND)
+        return model?.let {NetworkDto(it)} ?: throw ValidationException(ErrorKey.NOT_FOUND)
+    }
+
+    @DeleteMapping("{id}")
+    fun delete(@PathVariable id: String) {
+        repository.deleteById(id)
     }
 
 }
